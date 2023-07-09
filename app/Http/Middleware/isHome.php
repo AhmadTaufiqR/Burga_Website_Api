@@ -18,7 +18,7 @@ class isHome
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect('home');
+            return redirect('home')->withErrors('Kamu sudah login');
         }
         return $next($request);
     }

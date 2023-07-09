@@ -25,6 +25,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#profile">Profile</a></li>
                   <li><a class="dropdown-item" href="logout">Logout</a></li>
+                  <li><a class="dropdown-item" href="api-direct">API Documentation</a></li>
                 </ul>
               </li>
             </ul>
@@ -41,12 +42,14 @@
     </div>
     @endif
     @if($errors->any())
+    <div class="px-5 mt-4">
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $item)
                 <li>{{ $item }}</li>
             @endforeach
         </ul>
+      </div>
       </div>
     @endif
 

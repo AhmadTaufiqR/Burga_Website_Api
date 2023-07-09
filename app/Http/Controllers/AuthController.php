@@ -7,10 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
     function login(Request $request) {
+
+        Session::flash('email', $request->email);
         $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -26,7 +29,7 @@ class AuthController extends Controller
         if (Auth::attempt($loggin)) {
             return redirect('home')->with('success', 'Anda Berhasil Login');
         } else {
-            return redirect('login');
+            return redirect('login')->withErrors('Username atau Password yang anda masukkan salah');
         }
     }
 
@@ -37,6 +40,8 @@ class AuthController extends Controller
     function register(Request $request) {
         $datauser = new User();
 
+        Session::flash('email', $request->email);
+        Session::flash('name', $request->name);
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -70,7 +75,7 @@ class AuthController extends Controller
             return redirect('home')->with('success', 'Anda Berhasil Mendaftar');
             }
         } else {
-            return 'gagal';
+            return redirect('register-BurgaCorp')->withErrors('Pendaftaran gagal silahkan isi kembali');
         }
     }
 

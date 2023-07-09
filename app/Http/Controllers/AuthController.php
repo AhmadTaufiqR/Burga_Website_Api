@@ -98,4 +98,8 @@ class AuthController extends Controller
         return view('login.login');
     }
 
+    function api_direct() {
+        return view('api.api_view');
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\loginCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,7 +10,10 @@ use Illuminate\Support\Facades\Hash;
 class loginController extends Controller
 {
     function login_user(Request $request){
-        $user = User::collection();
+        $user = User::where('email', '=', $request->email)
+        ->orWhere('name', '=', $request->name)
+        ->where('level', '=', 'user')
+        ->first();
         if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'user'){
             return response()->json([
                 'status' => false,

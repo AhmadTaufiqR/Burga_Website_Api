@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\loginCollection;
+use App\Http\Resources\loginJsonResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,8 +24,8 @@ class loginController extends Controller
         return response()->json([
             'status' => true,
             'message' =>'success',
-            'data_user' => $user,
-        ], 200);
+            'data_user' => new loginJsonResource($user),
+        ], 200)->header('Content-Type', 'application/json');
     }
 
     function login_kasir(Request $request){
@@ -33,7 +34,7 @@ class loginController extends Controller
                     ->where('level', '=', 'kasir')
                     ->first();
 
-        if (!$user|| !Hash::check($request->password, $user->password)|| $user->level != 'kasir'){
+        if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'kasir'){
             return response()->json([
                 'status' => false,
                 "message" => 'Unauthorized'
@@ -42,8 +43,8 @@ class loginController extends Controller
         return response()->json([
             'status' => true,
             'message' =>'success',
-            'data_kasir' => $user,
-        ], 200);
+            'data_kasir' => new loginJsonResource($user),
+        ], 200)->header('Content-Type', 'application/json');
     }
 
     function register_kasir(Request $request){

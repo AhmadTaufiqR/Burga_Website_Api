@@ -28,12 +28,26 @@ Route::get('/', function (){
 })->name('login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('product', [ProductController::class, 'index']);
+    
+    Route::prefix('product')->group(function () {
+        Route::get('list', [ProductController::class, 'index']);
+        Route::post('store', [ProductController::class, 'store']);
+        Route::post('update/{id}', [ProductController::class, 'update']);
+        Route::get('destroy/{id}', [ProductController::class, 'destroy']);
+    });
+
     Route::post('login-user', [loginController::class, 'login_user']);
     Route::post('login-kasir', [loginController::class, 'login_kasir']);
 });
 
 Route::post('register-kasir', [loginController::class, 'register_kasir']);
 Route::post('register-user', [loginController::class, 'register_user']);
+
+
+Route::get('/storage-link', function(){
+    $target_folder = base_path().'/storage/app/public';
+     $link_folder = $_SERVER['DOCUMENT_ROOT']."/storage";
+     symlink($target_folder, $link_folder);
+});
 
 // Route::post('register-kasir', [AuthController::class, 'register']);

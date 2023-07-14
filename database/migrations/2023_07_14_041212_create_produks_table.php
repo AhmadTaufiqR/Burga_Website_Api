@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name_product');
             $table->string('price_product');
             $table->string('desc_product');
+            $table->string('image');
             $table->timestamps();
         });
 
@@ -28,6 +29,8 @@ return new class extends Migration
                 'name_product' => $faker->word(),
                 'price_product'=> $faker->randomNumber(3, true),
                 'desc_product'=> $faker->sentence(5, true),
+                'image'=> $faker->sentence(5, true),
+                
             ]);
         }
     }
@@ -39,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produks');
+        //
     }
 };

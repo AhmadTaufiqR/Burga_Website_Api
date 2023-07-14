@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class loginJsonResource extends JsonResource
@@ -20,7 +21,15 @@ class loginJsonResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'level' => $this->level,
-            'created_at' => $this->created_at,
+            'created_at' => $this->formatcreateatjam(),
+            'update_at' => $this->formatupdateatjam(),
         ];
+    }
+
+    public function formatcreateatjam() {
+        return Carbon::parse($this->created_at)->format('Y-m-d H:i:s');
+    }
+    public function formatupdateatjam() {
+        return Carbon::parse($this->created_at)->format('Y-m-d H:i:s');
     }
 }

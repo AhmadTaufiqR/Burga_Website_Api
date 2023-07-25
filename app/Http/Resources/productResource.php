@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class loginJsonResource extends JsonResource
+class productResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,9 +18,12 @@ class loginJsonResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'level' => $this->level,
+            'code_barcode' => $this->code_barcode,
+            'name_product' => $this->name_product,
+            'price_product' => $this->price_product,
+            'desc_product' => $this->desc_product,
+            'stok' => $this->stok,
+            'image' => $this->image,
             'created_at' => $this->formatcreateatjam(),
             'update_at' => $this->formatupdateatjam(),
         ];

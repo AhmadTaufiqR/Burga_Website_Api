@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Http\Resources\productResource;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -14,21 +16,30 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = product::orderBy('id','asc')->get();
+        $data = Product::orderBy('id','desc')->get();
         return response()->json([
             'status' => true,
             'massage' => 'data ditemukan',
-            'data' => $data
-        ], 200);
+            'list_product' => productResource::collection($data)
+        ], 200);    
     }
 
     public function store(Request $request)
     {
+        if(!$request->input('code_barcode') || !$request->input('name_product') || !$request->input('price_product') || !$request->input('desc_product') || !$request->input('stok')) {
+            return response()->json([
+                'status' => false,
+                'massage' => 'Silahkan periksa ulang'
+            ]);
+        }
+
         $product = new Product();
     
+        $product->code_barcode = $request->input('code_barcode');
         $product->name_product = $request->input('name_product');
         $product->price_product = $request->input('price_product');
         $product->desc_product = $request->input('desc_product');
+        $product->stok = $request->input('stok');
     
         // Upload dan simpan gambar
         if ($request->hasFile('image')) {
@@ -46,28 +57,44 @@ class ProductController extends Controller
 
     public function update(Request $request, $id) {
         
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
-        $product->name_product = $request->input('name_product');
-        $product->price_product = $request->input('price_product');
-        $product->desc_product = $request->input('desc_product');
+        if($request->input('name_product')) {
+            $product->name_product = $request->input('name_product');
+        }
+        if($request->input('price_product')) {
+            $product->price_product = $request->input('price_product');
+        }
+        if($request->input('desc_product')) {
+            $product->desc_product = $request->input('desc_product');
+        }
+        if($request->input('stok')) {
+            $product->stok = $request->input('stok');
+        }
 
         // Upload dan simpan gambar
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('/images');
+            if (Storage::exists($product->image)) {
+                Storage::delete([$product->image]);
+            }
+            $imagePath = $request->file('image')->store('images');
             $product->image = $imagePath;
         }
 
         $product->save();
 
+        $data_find = Product::findOrFail($id);
+
         return response()->json([
             'status' => true,
             'message' => 'Product updated successfully',
+            'data_product' => $data_find
         ], 200);
+
     }
 
     public function destroy($id) {
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $product->delete();
 
         return response()->json([

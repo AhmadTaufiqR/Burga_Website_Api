@@ -33,16 +33,16 @@
         <form action="login-user" method="POST">
           @csrf
           <div class="mb-3">
-            <h3>Login Here</h3>
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <h3>Login</h3>
+            <label for="exampleInputEmail1" class="form-label">Your Email address</label>
             <input type="email" class="form-control" value="{{ Session::get('email') }}" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <label for="exampleInputPassword1" class="form-label">Your Password</label>
             <input type="password" class="form-control" name="password" id="exampleInputPassword1">
           </div>
-          <button type="submit" name="submit" class="mt-3 btn btn-primary w-100">Submit</button>
+          <button type="submit" name="submit" class="mt-3 btn btn-primary w-100">Login</button>
         </form>
         <div class="pt-3">
           <a href="register-BurgaCorp">Register?</a>

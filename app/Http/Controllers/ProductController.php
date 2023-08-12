@@ -21,7 +21,7 @@ class ProductController extends Controller
             'status' => true,
             'massage' => 'data ditemukan',
             'list_product' => productResource::collection($data)
-        ], 200);    
+        ], 200);
     }
 
     public function store(Request $request)
@@ -95,6 +95,9 @@ class ProductController extends Controller
 
     public function destroy($id) {
         $product = Product::findOrFail($id);
+            if (Storage::exists($product->image)) {
+                Storage::delete([$product->image]);
+            }
         $product->delete();
 
         return response()->json([

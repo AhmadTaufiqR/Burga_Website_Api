@@ -15,8 +15,16 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table-> string('id_transaction');
-            $table-> string('order_id');
+            $table->unsignedBigInteger('id_user')->nullable(true);
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->unsignedBigInteger('id_kasir')->nullable(true);
+            $table->foreign('id_kasir')->references('id')->on('users');
+            $table->unsignedBigInteger('id_store')->nullable(true);
+            $table->foreign('id_store')->references('id')->on('stores');
+            $table->date('date');
+            $table->integer('quantity');
+            $table->integer('total');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

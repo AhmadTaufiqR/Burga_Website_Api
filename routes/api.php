@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DetailTransactionController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +35,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('list', [ProductController::class, 'index']);
         Route::post('store', [ProductController::class, 'store']);
         Route::post('update/{id}', [ProductController::class, 'update']);
-        Route::get('destroy/{id}', [ProductController::class, 'destroy']);
+        Route::delete('destroy/{id}', [ProductController::class, 'destroy']);
+    });
+
+    Route::prefix('transaction')->group(function (){
+        Route::get('list', [TransactionController::class, 'index']);
+        Route::post('store', [TransactionController::class, 'store']);
+    });
+    Route::prefix('detail-transaction')->group(function (){
+        Route::get('list', [DetailTransactionController::class, 'index']);
+        Route::post('store', [DetailTransactionController::class, 'store']);
     });
 
     Route::post('login-user', [loginController::class, 'login_user']);
@@ -42,7 +53,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 Route::post('register-kasir', [loginController::class, 'register_kasir']);
 Route::post('register-user', [loginController::class, 'register_user']);
-
 
 Route::get('/storage-link', function(){
     $target_folder = base_path().'/storage/app/public';

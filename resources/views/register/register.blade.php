@@ -42,6 +42,10 @@
             <input type="text" value="{{ Session::get('name') }}" class="form-control" name="name">
           </div>
           <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <input type="text" value="{{ Session::get('alamat') }}" class="form-control" name="alamat">
+          </div>
+          <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="password">
           </div>

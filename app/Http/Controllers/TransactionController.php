@@ -2,63 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detail_transaction;
+use App\Models\Product;
+use App\Models\store;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    function index() {
+        $transaction = Transaction::orderBy('id', 'desc')->get();
+        return response()->json([
+            'status' => true,
+            'massage' => 'Transaksi ditemukan',
+            'list_transaction' => $transaction,
+        ], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        if(!$request->date||!$request->quantity||!$request->total){
+            return response()->json([
+                'status' => false,
+                'massage' => 'Silahkan periksa kembali'
+            ], 401);
+        }
+
+        $transacation = new Transaction();
+        $id_user = User::where('id', '=', $request->id_user)
+        ->where('level', '=', 'user')
+        ->pluck('id')->first();
+        $id_kasir = User::where('id', '=', $request->id_kasir)
+        ->where('level', '=', 'kasir')
+        ->pluck('id')->first();
+        $id_store = store::where('id', '=', $request->id_store)
+        ->pluck('id')->first();
+
+        $transacation->id_user = $id_user;
+        $transacation->id_kasir = $id_kasir;
+        $transacation->id_store = $id_store;
+        $transacation->date = $request->input('date');
+        $transacation->quantity = $request->input('quantity');
+        $transacation->total = $request->input('total');
+        $transacation->save();
+        
+        return response()->json([
+            'status' => true,
+            'massage' => 'berhasil melakukan transaksi',
+        ], 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Transaction $transaction)
-    {
-        //
-    }
 }

@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Detail_transaction extends Model
+class pondok extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
-    protected $fillable = ['id_transaction', 'id_product', 'quantity', 'unit_price', 'subtotal'];
 }

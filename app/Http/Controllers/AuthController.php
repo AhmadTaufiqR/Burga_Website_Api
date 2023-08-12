@@ -42,6 +42,7 @@ class AuthController extends Controller
 
         Session::flash('email', $request->email);
         Session::flash('name', $request->name);
+        Session::flash('alamat', $request->alamat);
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -53,6 +54,7 @@ class AuthController extends Controller
         
         $datauser->name = $request->name;
         $datauser->email = $request->email;
+        $datauser->address = $request->alamat;
         $datauser->password = Hash::make($request->password);
         $datauser->level = 'developer';
         $datauser->save();

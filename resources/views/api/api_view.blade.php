@@ -69,6 +69,7 @@
 					@include('main.add_transaction')
 					@include('main.list_detail_transaction')
 					@include('main.add_detail_transaction')
+					@include('main.list_store')
 					
 					
 				</div>

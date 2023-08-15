@@ -26,18 +26,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        $faker = \Faker\Factory::create();
-        for ($i=0; $i < 10 ; $i++) { 
-            Product::create([
-                'code_barcode' => $faker->randomNumber(5, true),
-                'name_product' => $faker->word(),
-                'price_product'=> $faker->randomNumber(3, true),
-                'desc_product'=> $faker->sentence(5, true),
-                'stok'=> $faker->randomNumber(1, true),
-                'image'=> $faker->sentence(5, true),
-                
-            ]);
-        }
+
     }
 
     /**

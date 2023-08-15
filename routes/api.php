@@ -3,6 +3,7 @@
 use App\Http\Controllers\DetailTransactionController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\storesController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::prefix('detail-transaction')->group(function (){
         Route::get('list', [DetailTransactionController::class, 'index']);
         Route::post('store', [DetailTransactionController::class, 'store']);
+    });
+
+    Route::prefix('store')->group(function (){
+        Route::get('list', [storesController::class, 'index']);
+        Route::post('store', [storesController::class, 'store']);
     });
 
     Route::post('login-user', [loginController::class, 'login_user']);

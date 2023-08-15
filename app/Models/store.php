@@ -10,4 +10,6 @@ class store extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['id_pondok', 'name', 'owner', 'address', 'image', 'balance'];
 }

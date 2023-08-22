@@ -38,14 +38,14 @@
                             <td><code>foreign key from user</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari kasir yang menjaga tok</td>
+                            <td>Didapatkan dari id kasir yang menjaga tok</td>
                         </tr>
                         <tr>
                             <td>id_store</td>
                             <td><code>foreign key from store</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari toko yang terdaftar di system</td>
+                            <td>Didapatkan dari toko yang terdaftar oleh web admin</td>
                         </tr>
                         <tr>
                             <td>id_transaction</td>

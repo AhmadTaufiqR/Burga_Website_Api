@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('id_kasir')->references('id')->on('users');
             $table->unsignedBigInteger('id_store')->nullable(true);
             $table->foreign('id_store')->references('id')->on('stores');
+            $table->string('id_transaction');
             $table->date('date');
             $table->integer('quantity');
             $table->integer('total');

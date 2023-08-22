@@ -31,21 +31,28 @@
                             <td><code>foreign key from user</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari user yang melakukan pembelian, namun untuk tes boleh untuk tidak diisi atau boleh null</td>
+                            <td>Didapatkan dari id user</td>
                         </tr>
                         <tr>
                             <td>id_kasir</td>
                             <td><code>foreign key from user</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari kasir yang menjadi petugas, namun untuk tes boleh untuk tidak diisi atau boleh null</td>
+                            <td>Didapatkan dari kasir yang menjaga tok</td>
                         </tr>
                         <tr>
                             <td>id_store</td>
                             <td><code>foreign key from store</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari toko yang terdaftar di system, namun untuk tes boleh untuk tidak diisi atau boleh null</td>
+                            <td>Didapatkan dari toko yang terdaftar di system</td>
+                        </tr>
+                        <tr>
+                            <td>id_transaction</td>
+                            <td><code>String</code></td>
+                            <td><code>Body</code></td>
+                            <td><code>required</code></td>
+                            <td>Bisa custom sendiri berdasarkan di mobile</td>
                         </tr>
                         <tr>
                             <td>date</td>

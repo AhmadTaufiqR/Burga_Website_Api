@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TransactionResource;
+use App\Models\Detail_transaction;
+use App\Models\Product;
 use App\Models\store;
 use App\Models\Transaction;
 use App\Models\User;
@@ -14,7 +17,7 @@ class TransactionController extends Controller
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
-            'list_transaction' => $transaction,
+            'list_transaction' => TransactionResource::collection($transaction),
         ], 200);
     }
 

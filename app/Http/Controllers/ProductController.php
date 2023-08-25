@@ -107,7 +107,7 @@ class ProductController extends Controller
     }
 
     function show($id) {
-        $product = Product::where('id', '=', $id)->get();
+        $product = Product::where('id_store', '=', $id)->get();
 
         return response()->json([
             'status' => true,

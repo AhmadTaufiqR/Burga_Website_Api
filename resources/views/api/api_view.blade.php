@@ -62,6 +62,7 @@
 					@include('main.login_siswa')
 					@include('main.login_kasir')
 					@include('main.list_product')
+					@include('main.list_product_show')
 					@include('main.add_product')
 					@include('main.update_product')
 					@include('main.delete_product')

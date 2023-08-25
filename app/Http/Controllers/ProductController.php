@@ -107,11 +107,12 @@ class ProductController extends Controller
     }
 
     function show($id) {
-        $product = Product::where('id', '=', $id)->orderBy('id', 'desc')->get();
+        $product = Product::where('id_store', '=', $id)->get();
 
         return response()->json([
             'status' => true,
-            'message' => productResource::collection($product)
+            'message' => 'data berhasil ditemukan',
+            'list_product' => productResource::collection($product)
         ]);
     }
 

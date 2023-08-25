@@ -106,5 +106,14 @@ class ProductController extends Controller
         ], 200);
     }
 
+    function show($id) {
+        $product = Product::where('id', '=', $id)->orderBy('id', 'desc')->get();
+
+        return response()->json([
+            'status' => true,
+            'message' => productResource::collection($product)
+        ]);
+    }
+
 
 }

@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if(!$request->input('code_barcode') || !$request->input('name_product') || !$request->input('price_product') || !$request->input('desc_product') || !$request->input('stok')) {
+        if(!$request->input('id_store') || !$request->input('code_barcode') || !$request->input('name_product') || !$request->input('price_product') || !$request->input('desc_product') || !$request->input('stok')) {
             return response()->json([
                 'status' => false,
                 'massage' => 'Silahkan periksa ulang'

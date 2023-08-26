@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\productResource;
 use App\Models\Product;
+use App\Models\store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,10 @@ class ProductController extends Controller
         }
 
         $product = new Product();
-    
+        
+        $id_store = store::where('id_store', '=', $request->input('id_store'))->pluck('id_store')->get();
+
+        $product->id_store = $id_store;
         $product->code_barcode = $request->input('code_barcode');
         $product->name_product = $request->input('name_product');
         $product->price_product = $request->input('price_product');

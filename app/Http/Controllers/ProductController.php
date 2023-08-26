@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         $product = new Product();
         
-        $id_store = store::where('id', '=', $request->input('id_store'))->pluck('id')->get();
+        $id_store = store::where('id', '=', $request->input('id_store'))->pluck('id')->first();
 
         $product->id_store = $id_store;
         $product->code_barcode = $request->input('code_barcode');

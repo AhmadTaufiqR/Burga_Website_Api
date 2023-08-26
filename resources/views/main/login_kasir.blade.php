@@ -56,14 +56,13 @@
 <pre>{
     "status": true,
     "message": "success",
-    "user": {
-        "id": 11,
+    "data_kasir": {
+        "id": 12,
         "name": "kasir",
         "email": "kasir@gmail.com",
-        "email_verified_at": null,
         "level": "kasir",
-        "created_at": "2023-07-13T07:26:22.000000Z",
-        "updated_at": "2023-07-13T07:26:22.000000Z"
+        "created_at": "2023-07-13 03:08:52",
+        "update_at": "2023-08-26 14:00:37"
     }
 }</pre>
             </div>

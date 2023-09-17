@@ -23,10 +23,10 @@ class DetailTransactionController extends Controller
     {
         $detail_transaction = new Detail_transaction();
 
-        $id_transaction = Transaction::where('id_transaction', '=', $request->id_transaction)->pluck('id_transaction')->first();
+        // $id_transaction = Transaction::where('id_transaction', '=', $request->id_transaction)->pluck('id_transaction')->first();
         $id_product = Product::where('id', '=', $request->id_product)->pluck('id')->first();
 
-        $detail_transaction->id_transactions = $id_transaction;
+        $detail_transaction->id_transactions =  $request->id_transaction;
         $detail_transaction->id_product = $id_product;
         $detail_transaction->quantity = $request->input('quantity');
         $detail_transaction->unit_price = $request->input('unit_price');

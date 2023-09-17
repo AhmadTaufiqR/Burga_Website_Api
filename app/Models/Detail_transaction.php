@@ -11,5 +11,5 @@ class Detail_transaction extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['id_transaction', 'id_product', 'quantity', 'unit_price', 'subtotal'];
+    protected $fillable = ['id_transactions', 'id_product', 'quantity', 'unit_price', 'subtotal'];
 }

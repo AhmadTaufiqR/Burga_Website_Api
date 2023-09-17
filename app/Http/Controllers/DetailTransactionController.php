@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detail_transaction;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,8 @@ class DetailTransactionController extends Controller
     {
         $detail_transaction = new Detail_transaction();
 
-        $id_transaction = Transaction::where('id', '=', $request->id_transaction)->pluck('id')->first();
-        $id_product = Transaction::where('id', '=', $request->id_product)->pluck('id')->first();
+        $id_transaction = Transaction::where('id_transaction', '=', $request->id_transaction)->pluck('id_transaction')->first();
+        $id_product = Product::where('id', '=', $request->id_product)->pluck('id')->first();
 
         $detail_transaction->id_transactions = $id_transaction;
         $detail_transaction->id_product = $id_product;

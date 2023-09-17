@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->string('id_transaction')->primary();
             $table->unsignedBigInteger('id_user')->nullable(true);
             $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_kasir')->nullable(true);
             $table->foreign('id_kasir')->references('id')->on('users');
             $table->unsignedBigInteger('id_store')->nullable(true);
             $table->foreign('id_store')->references('id')->on('stores');
-            $table->string('id_transaction');
             $table->date('date');
             $table->integer('quantity');
             $table->integer('total');

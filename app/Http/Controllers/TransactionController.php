@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     function index() {
-        $transaction = Transaction::orderBy('id', 'desc')->get();
+        $transaction = Transaction::orderBy('id_transaction', 'desc')->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',

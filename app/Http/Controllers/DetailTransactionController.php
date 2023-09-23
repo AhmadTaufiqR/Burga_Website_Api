@@ -41,7 +41,7 @@ class DetailTransactionController extends Controller
     }
 
     function show($id) {
-        $detail_transaction = Transaction::where('id_transactions', '=', $id)->orderBy('id', 'desc')->get();
+        $detail_transaction = Detail_transaction::where('id_transactions', '=', $id)->orderBy('id', 'desc')->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',

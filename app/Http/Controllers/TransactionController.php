@@ -56,4 +56,13 @@ class TransactionController extends Controller
         
     }
 
+    function show($id) {
+        $transaksi = Transaction::where('id_store', '=', $id)->orderBy('id_transaction', 'desc')->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'list_transaksi' => TransactionResource::collection($transaksi)
+        ]);
+    }
+
 }

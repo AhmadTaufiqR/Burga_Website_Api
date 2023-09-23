@@ -42,10 +42,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::prefix('transaction')->group(function (){
         Route::get('list', [TransactionController::class, 'index']);
+        Route::get('list/{id}', [TransactionController::class, 'show']);
         Route::post('store', [TransactionController::class, 'store']);
     });
     Route::prefix('detail-transaction')->group(function (){
         Route::get('list', [DetailTransactionController::class, 'index']);
+        Route::get('list/{id}', [DetailTransactionController::class, 'show']);
         Route::post('store', [DetailTransactionController::class, 'store']);
     });
 

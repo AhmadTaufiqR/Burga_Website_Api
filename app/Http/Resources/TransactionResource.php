@@ -17,8 +17,8 @@ class TransactionResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'id_user' => $this->id_user,
-            'id_kasir' => $this->id_kasir,
+            'id_user' => $this->name_user,
+            'id_kasir' => $this->name_kasir,
             'id_store' => $this->id_store,
             'id_transaction' => $this->id_transaction,
             'date' => $this->date,
@@ -32,6 +32,6 @@ class TransactionResource extends JsonResource
         return Carbon::parse($this->created_at)->format('Y-m-d H:i:s');
     }
     public function formatupdateatjam() {
-        return Carbon::parse($this->update_at)->format('Y-m-d H:i:s');
+        return Carbon::parse($this->updated_at)->format('Y-m-d H:i:s');
     }
 }

@@ -9,11 +9,17 @@ use App\Models\store;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
     function index() {
-        $transaction = Transaction::orderBy('id_transaction', 'desc')->get();
+        $transaction = DB::table('transactions')
+        ->leftjoin('users AS A', 'A.id', '=', 'transactions.id_user')
+        ->leftjoin('users AS B', 'B.id', '=', 'transactions.id_kasir')
+        ->select('transactions.*','A.name as name_user','B.name as name_kasir')
+        ->get();
+
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',

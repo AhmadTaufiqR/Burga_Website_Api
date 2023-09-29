@@ -14,7 +14,7 @@ class DetailTransactionController extends Controller
     {
         // $detail_transaction = Detail_transaction::orderBy('id', 'desc')->get();
         $detail_transaction = Detail_transaction::select('detail_transactions.*', 'products.name_product')
-        ->join('products', 'detail_transactions.id_product', '=', 'products.id');
+        ->join('products', 'detail_transactions.id_product', '=', 'products.id')->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DetailTransactionResource;
 use App\Models\Detail_transaction;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -11,11 +12,13 @@ class DetailTransactionController extends Controller
 {
     public function index()
     {
-        $detail_transaction = Detail_transaction::orderBy('id', 'desc')->get();
+        // $detail_transaction = Detail_transaction::orderBy('id', 'desc')->get();
+        $detail_transaction = Detail_transaction::select('detail_transactions.*', 'products.name_product')
+        ->join('products', 'detail_transaction.id_product', '=', 'products.id');
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
-            'list_detail_transaction' => $detail_transaction,
+            'list_detail_transaction' => DetailTransactionResource::collection($detail_transaction)
         ], 200);
     }
 

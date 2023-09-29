@@ -63,7 +63,15 @@ class TransactionController extends Controller
     }
 
     function show($id) {
-        $transaksi = Transaction::where('id_store', '=', $id)->orderBy('id_transaction', 'desc')->get();
+        // $transaksi = Transaction::where('id_store', '=', $id)->orderBy('id_transaction', 'desc')->get();
+        $transaksi = DB::table('transactions')
+        ->leftjoin('users AS A', 'A.id', '=', 'transactions.id_user')
+        ->leftjoin('users AS B', 'B.id', '=', 'transactions.id_kasir')
+        ->select('transactions.*','A.name as name_user','B.name as name_kasir')
+        ->where('transactions.id_store', '=', $id)
+        ->orderBy('transactions.id_transaction', 'desc')
+        ->get();
+        
         return response()->json([
             'status' => true,
             'message' => 'data berhasil ditemukan',

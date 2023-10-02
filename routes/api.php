@@ -60,6 +60,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('login-kasir', [loginController::class, 'login_kasir']);
 });
 
+Route::post('login-admin', [loginController::class, 'login_admin']);
+Route::post('register-admin', [loginController::class, 'register_admin']);
+
 Route::post('register-kasir', [loginController::class, 'register_kasir']);
 Route::post('register-user', [loginController::class, 'register_user']);
 

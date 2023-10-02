@@ -47,6 +47,39 @@ class loginController extends Controller
         ], 200)->header('Content-Type', 'application/json');
     }
 
+    function login_admin(Request $request){
+        $user = User::where('email', '=', $request->email)
+                    ->orWhere('name', '=', $request->name)
+                    ->where('level', '=', 'admin')
+                    ->first();
+
+        if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'admin'){
+            return response()->json([
+                'status' => false,
+                "message" => 'Unauthorized'
+            ], 401);
+        }
+        return response()->json([
+            'status' => true,
+            'message' =>'success',
+            'data_kasir' => new loginJsonResource($user),
+        ], 200)->header('Content-Type', 'application/json');
+    }
+
+    function register_admin(Request $request){
+        $kasir = new User();
+
+        $kasir->name = $request->name;
+        $kasir->email = $request->email;
+        $kasir->password = Hash::make($request->password);
+        $kasir->level = 'kasir';
+
+        $kasir->save();
+        return response()->json([
+            'status' => true,
+            'message' =>'success',
+        ], 200);
+    }
     function register_kasir(Request $request){
         $kasir = new User();
 

@@ -44,11 +44,18 @@ class DetailTransactionController extends Controller
     }
 
     function show($id) {
-        $detail_transaction = Detail_transaction::where('id_transactions', '=', $id)->orderBy('id', 'desc')->get();
+        // $detail_transaction = Detail_transaction::where('id_transactions', '=', $id)->orderBy('id', 'desc')->get();
+        // return response()->json([
+        //     'status' => true,
+        //     'massage' => 'Transaksi ditemukan',
+        //     'list_detail_transaction' => $detail_transaction,
+        // ], 200);
+        $detail_transaction = Detail_transaction::select('detail_transactions.*', 'products.name_product')
+        ->join('products', 'detail_transactions.id_product', '=', 'products.id')->where('id_transactions', '=', $id)->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
-            'list_detail_transaction' => $detail_transaction,
+            'list_detail_transaction' => DetailTransactionResource::collection($detail_transaction)
         ], 200);
     }
 

@@ -17,10 +17,11 @@ class TransactionResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'id_user' => $this->name_user,
-            'id_kasir' => $this->name_kasir,
+            'user' => $this->user->name,
+            'kasir' => $this->kasir->name,
             'id_store' => $this->id_store,
             'id_transaction' => $this->id_transaction,
+            'detail' => DetailTransactionResource::collection($this->detail),
             'date' => $this->date,
             'quantity' => $this->quantity,
             'total' => $this->total,

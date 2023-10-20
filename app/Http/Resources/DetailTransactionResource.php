@@ -15,11 +15,11 @@ class DetailTransactionResource extends JsonResource
      */
     public function toArray($request)
     {
+        $this->load('product');
         // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'id_transactions' => $this->id_transactions,
-            'name_product' => $this->name_product,
+            'name_product' => $this->product->name_product,
             'quantity' => $this->quantity,
             'unit_price' => $this->unit_price,
             'subtotal' => $this->subtotal,

@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Product::orderBy('id','desc')->get();
+        $data = Product::orderBy('id', 'desc')->get();
         return response()->json([
             'status' => true,
             'massage' => 'data ditemukan',
@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if(!$request->input('id_store') || !$request->input('code_barcode') || !$request->input('name_product') || !$request->input('price_product') || !$request->input('desc_product') || !$request->input('stok')) {
+        if (!$request->input('id_store') || !$request->input('code_barcode') || !$request->input('name_product') || !$request->input('price_product') || !$request->input('desc_product') || !$request->input('stok')) {
             return response()->json([
                 'status' => false,
                 'massage' => 'Silahkan periksa ulang'
@@ -35,7 +35,7 @@ class ProductController extends Controller
         }
 
         $product = new Product();
-        
+
         $id_store = store::where('id', '=', $request->input('id_store'))->pluck('id')->first();
 
         $product->id_store = $id_store;
@@ -44,35 +44,36 @@ class ProductController extends Controller
         $product->price_product = $request->input('price_product');
         $product->desc_product = $request->input('desc_product');
         $product->stok = $request->input('stok');
-    
+
         // Upload dan simpan gambar
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('/images');
             $product->image = $imagePath;
         }
-    
+
         $product->save();
-    
+
         return response()->json([
             'status' => true,
             'message' => 'Product created successfully',
         ], 200);
     }
 
-    public function update(Request $request, $id) {
-        
+    public function update(Request $request, $id)
+    {
+
         $product = Product::findOrFail($id);
 
-        if($request->input('name_product')) {
+        if ($request->input('name_product')) {
             $product->name_product = $request->input('name_product');
         }
-        if($request->input('price_product')) {
+        if ($request->input('price_product')) {
             $product->price_product = $request->input('price_product');
         }
-        if($request->input('desc_product')) {
+        if ($request->input('desc_product')) {
             $product->desc_product = $request->input('desc_product');
         }
-        if($request->input('stok')) {
+        if ($request->input('stok')) {
             $product->stok = $request->input('stok');
         }
 
@@ -94,14 +95,14 @@ class ProductController extends Controller
             'message' => 'Product updated successfully',
             'data_product' => $data_find
         ], 200);
-
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $product = Product::findOrFail($id);
-            if (Storage::exists($product->image)) {
-                Storage::delete([$product->image]);
-            }
+        if (Storage::exists($product->image)) {
+            Storage::delete([$product->image]);
+        }
         $product->delete();
 
         return response()->json([
@@ -110,7 +111,8 @@ class ProductController extends Controller
         ], 200);
     }
 
-    function show($id) {
+    function show($id)
+    {
         $product = Product::where('id_store', '=', $id)->orderBy('id', 'desc')->get();
 
         return response()->json([
@@ -119,6 +121,4 @@ class ProductController extends Controller
             'list_product' => productResource::collection($product)
         ]);
     }
-
-
 }

@@ -1,5 +1,7 @@
 <h3 class="page-title"><br>Login Siswa</h3>
-<h4 class="page-title">API login untuk siswa ini digunakan ketika user ingin melakukan login dan masuk kehalaman tampilan siswa dan bisa melakukan pembayaran, dll. Endpoint <code>https://api.burga.web.id/api/login-user</code>. Method <code>POST</code></h4>
+<h4 class="page-title">API login untuk siswa ini digunakan ketika user ingin melakukan login dan masuk kehalaman tampilan
+    siswa dan bisa melakukan pembayaran, dll. Endpoint <code>https://api.burga.web.id/api/login-user</code>. Method
+    <code>POST</code></h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -31,7 +33,8 @@
                             <td><code>string</code></td>
                             <td><code>Body</code></td>
                             <td><code>Required</code></td>
-                            <td>Bisa menggunakan email atau atau name <br> Default value<br>email: <code>user@gmail.com</code> <br>name: <code>user</code></td>
+                            <td>Bisa menggunakan email atau atau name <br> Default value<br>email:
+                                <code>user@gmail.com</code> <br>name: <code>user</code></td>
                         </tr>
                         <tr>
                             <td>password</td>
@@ -53,7 +56,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "success",
     "data_user": {
@@ -68,7 +71,7 @@
             </div>
         </div>
 
-        
+
         <!-- END TABLE HOVER -->
     </div>
 </div>

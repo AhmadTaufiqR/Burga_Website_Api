@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    function login(Request $request) {
+    function login(Request $request)
+    {
 
         Session::flash('email', $request->email);
         $request->validate([
@@ -33,11 +34,13 @@ class AuthController extends Controller
         }
     }
 
-    function index(){
+    function index()
+    {
         return view('register.register');
     }
 
-    function register(Request $request) {
+    function register(Request $request)
+    {
         $datauser = new User();
 
         Session::flash('email', $request->email);
@@ -51,14 +54,14 @@ class AuthController extends Controller
             'email.required' => 'Email wajib diisi',
             'password.required' => 'Password wajib diisi'
         ]);
-        
+
         $datauser->name = $request->name;
         $datauser->email = $request->email;
         $datauser->address = $request->alamat;
         $datauser->password = Hash::make($request->password);
         $datauser->level = 'developer';
         $datauser->save();
-        
+
         $loggin = [
             'email' => $request->email,
             'password' => $request->password
@@ -74,14 +77,15 @@ class AuthController extends Controller
                 $isToken->token = $token;
                 $isToken->save();
 
-            return redirect('home')->with('success', 'Anda Berhasil Mendaftar');
+                return redirect('home')->with('success', 'Anda Berhasil Mendaftar');
             }
         } else {
             return redirect('register-BurgaCorp')->withErrors('Pendaftaran gagal silahkan isi kembali');
         }
     }
 
-    function home(){
+    function home()
+    {
         $user_id = Auth::id();
         $isToken = Token::where('user_id', $user_id)->pluck('token')->first();
         if (!$isToken) {
@@ -91,17 +95,19 @@ class AuthController extends Controller
         }
     }
 
-    function logout() {
+    function logout()
+    {
         Auth::logout();
         return redirect('login');
     }
 
-    function view_login() {
+    function view_login()
+    {
         return view('login.login');
     }
 
-    function api_direct() {
+    function api_direct()
+    {
         return view('api.api_view');
     }
-
 }

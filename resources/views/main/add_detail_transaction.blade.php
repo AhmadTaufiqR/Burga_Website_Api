@@ -1,5 +1,7 @@
 <h3 class="page-title"><br>Add Detail Transaction</h3>
-<h4 class="page-title">API ini digunakan untuk memnambahkan detail transaksi kedalam database. Endpoint <code>https://api.burga.web.id/api/detail-transaction/store</code>. Method yang digunakan adalah <code>POST</code></h4>
+<h4 class="page-title">API ini digunakan untuk memnambahkan detail transaksi kedalam database. Endpoint
+    <code>https://api.burga.web.id/api/detail-transaction/store</code>. Method yang digunakan adalah <code>POST</code>
+</h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -31,14 +33,16 @@
                             <td><code>foreign key from transaction</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari transaksi yang sudah diinputkan terlebih dahulu, namun untuk tes boleh untuk tidak diisi atau boleh null</td>
+                            <td>Didapatkan dari transaksi yang sudah diinputkan terlebih dahulu, namun untuk tes boleh
+                                untuk tidak diisi atau boleh null</td>
                         </tr>
                         <tr>
                             <td>id_product</td>
                             <td><code>foreign key from product</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Didapatkan dari product yang ingin di beli, namun untuk tes boleh untuk tidak diisi atau boleh null</td>
+                            <td>Didapatkan dari product yang ingin di beli, namun untuk tes boleh untuk tidak diisi atau
+                                boleh null</td>
                         </tr>
                         <tr>
                             <td>quantity</td>
@@ -59,7 +63,8 @@
                             <td><code>integer</code></td>
                             <td><code>Body</code></td>
                             <td><code>required</code></td>
-                            <td>Subtotal dari hasil penjumlahan antara <code>quantity</code> dan <code>unit_price</code></td>
+                            <td>Subtotal dari hasil penjumlahan antara <code>quantity</code> dan <code>unit_price</code>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,7 +79,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "Transaction successfully added"
 }</pre>

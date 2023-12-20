@@ -14,7 +14,7 @@ class DetailTransactionController extends Controller
     {
         // $detail_transaction = Detail_transaction::orderBy('id', 'desc')->get();
         $detail_transaction = Detail_transaction::select('detail_transactions.*', 'products.name_product')
-        ->join('products', 'detail_transactions.id_product', '=', 'products.id')->get();
+            ->join('products', 'detail_transactions.id_product', '=', 'products.id')->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
@@ -40,17 +40,16 @@ class DetailTransactionController extends Controller
             'status' => true,
             'massage' => 'berhasil melakukan transaksi',
         ], 200);
-
     }
 
-    function show($id) {
+    function show($id)
+    {
         $detail_transaction = Detail_transaction::select('detail_transactions.*', 'products.name_product')
-        ->join('products', 'detail_transactions.id_product', '=', 'products.id')->where('id_transactions', '=', $id)->get();
+            ->join('products', 'detail_transactions.id_product', '=', 'products.id')->where('id_transactions', '=', $id)->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
             'list_detail_transaction' => DetailTransactionResource::collection($detail_transaction)
         ], 200);
     }
-
 }

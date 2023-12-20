@@ -11,9 +11,10 @@ class Detail_transaction extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = [ 'id_product', 'quantity', 'unit_price', 'subtotal'];
+    protected $fillable = ['id_product', 'quantity', 'unit_price', 'subtotal'];
 
-    public function product() {
+    public function product()
+    {
         return $this->belongsTo(Product::class, 'id_product', 'id');
     }
 }

@@ -11,22 +11,26 @@ class Transaction extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
-    protected $fillable = ['id_user', 'id_kasir', 'id_store' ,'id_transaction', 'date', 'quantity', 'total'];
 
-    public function kasir() {
+    protected $fillable = ['id_user', 'id_kasir', 'id_store', 'id_transaction', 'date', 'quantity', 'total'];
+
+    public function kasir()
+    {
         return $this->belongsTo(User::class, 'id_kasir', 'id');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    public function detail() {
+    public function detail()
+    {
         return $this->hasMany(Detail_transaction::class, 'id_transactions', 'id_transaction');
     }
 
-    public function scopeWhereId(Builder $builder, $id) {
+    public function scopeWhereId(Builder $builder, $id)
+    {
         return $builder->where('id_store', $id);
     }
 }

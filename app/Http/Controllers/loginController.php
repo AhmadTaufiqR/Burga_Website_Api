@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
 {
-    function login_user(Request $request){
+    function login_user(Request $request)
+    {
         $user = User::where('email', '=', $request->email)
-        ->orWhere('name', '=', $request->name)
-        ->where('level', '=', 'user')
-        ->first();
-        if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'user'){
+            ->orWhere('name', '=', $request->name)
+            ->where('level', '=', 'user')
+            ->first();
+        if (!$user || !Hash::check($request->password, $user->password) || $user->level != 'user') {
             return response()->json([
                 'status' => false,
                 "message" => 'Unauthorized'
@@ -23,18 +24,19 @@ class loginController extends Controller
         }
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
             'data_user' => new loginJsonResource($user),
         ], 200)->header('Content-Type', 'application/json');
     }
 
-    function login_kasir(Request $request){
+    function login_kasir(Request $request)
+    {
         $user = User::where('email', '=', $request->email)
-                    ->orWhere('name', '=', $request->name)
-                    ->where('level', '=', 'kasir')
-                    ->first();
+            ->orWhere('name', '=', $request->name)
+            ->where('level', '=', 'kasir')
+            ->first();
 
-        if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'kasir'){
+        if (!$user || !Hash::check($request->password, $user->password) || $user->level != 'kasir') {
             return response()->json([
                 'status' => false,
                 "message" => 'Unauthorized'
@@ -42,18 +44,19 @@ class loginController extends Controller
         }
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
             'data_kasir' => new loginJsonResource($user),
         ], 200)->header('Content-Type', 'application/json');
     }
 
-    function login_admin(Request $request){
+    function login_admin(Request $request)
+    {
         $user = User::where('email', '=', $request->email)
-                    ->orWhere('name', '=', $request->name)
-                    ->where('level', '=', 'admin')
-                    ->first();
+            ->orWhere('name', '=', $request->name)
+            ->where('level', '=', 'admin')
+            ->first();
 
-        if (!$user|| !Hash::check($request->password, $user->password) || $user->level != 'admin'){
+        if (!$user || !Hash::check($request->password, $user->password) || $user->level != 'admin') {
             return response()->json([
                 'status' => false,
                 "message" => 'Unauthorized'
@@ -61,12 +64,13 @@ class loginController extends Controller
         }
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
             'data_kasir' => new loginJsonResource($user),
         ], 200)->header('Content-Type', 'application/json');
     }
 
-    function register_admin(Request $request){
+    function register_admin(Request $request)
+    {
         $kasir = new User();
 
         $kasir->name = $request->name;
@@ -77,10 +81,11 @@ class loginController extends Controller
         $kasir->save();
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
         ], 200);
     }
-    function register_kasir(Request $request){
+    function register_kasir(Request $request)
+    {
         $kasir = new User();
 
         $kasir->name = $request->name;
@@ -91,10 +96,11 @@ class loginController extends Controller
         $kasir->save();
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
         ], 200);
     }
-    function register_user(Request $request){
+    function register_user(Request $request)
+    {
         $kasir = new User();
 
         $kasir->name = $request->name;
@@ -105,7 +111,7 @@ class loginController extends Controller
         $kasir->save();
         return response()->json([
             'status' => true,
-            'message' =>'success',
+            'message' => 'success',
         ], 200);
     }
 }

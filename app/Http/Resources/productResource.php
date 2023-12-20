@@ -30,10 +30,12 @@ class productResource extends JsonResource
         ];
     }
 
-    public function formatcreateatjam() {
+    public function formatcreateatjam()
+    {
         return Carbon::parse($this->created_at)->format('Y-m-d H:i:s');
     }
-    public function formatupdateatjam() {
+    public function formatupdateatjam()
+    {
         return Carbon::parse($this->update_at)->format('Y-m-d H:i:s');
     }
 }

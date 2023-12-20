@@ -17,7 +17,7 @@ class isRoute
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()){
+        if (Auth::check()) {
             return redirect('home')->withErrors('Kamu sudah login');
         }
         return redirect('login');

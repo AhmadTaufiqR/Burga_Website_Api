@@ -1,5 +1,7 @@
 <h3 class="page-title"><br>Login Kasir</h3>
-<h4 class="page-title">API login untuk siswa ini digunakan ketika kasir ingin melakukan login dan masuk kehalaman tampilan kasir yang bisa mengelola barang, dll. Endpoint <code>https://api.burga.web.id/api/login-kasir</code>. Method yang digunakan adalah <code>POST</code></h4>
+<h4 class="page-title">API login untuk siswa ini digunakan ketika kasir ingin melakukan login dan masuk kehalaman
+    tampilan kasir yang bisa mengelola barang, dll. Endpoint <code>https://api.burga.web.id/api/login-kasir</code>.
+    Method yang digunakan adalah <code>POST</code></h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -31,7 +33,8 @@
                             <td><code>string</code></td>
                             <td><code>Body</code></td>
                             <td><code>Required</code></td>
-                            <td>Bisa menggunakan email atau atau name <br> Default value<br>email: <code>kasir@gmail.com</code> <br>name: <code>kasir</code></td>
+                            <td>Bisa menggunakan email atau atau name <br> Default value<br>email:
+                                <code>kasir@gmail.com</code> <br>name: <code>kasir</code></td>
                         </tr>
                         <tr>
                             <td>password</td>
@@ -53,7 +56,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "success",
     "data_kasir": {

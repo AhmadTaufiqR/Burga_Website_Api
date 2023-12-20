@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class storesController extends Controller
 {
-    function index() {
+    function index()
+    {
         $stores = store::orderBy('id', 'desc')->get();
 
         if ($stores) {
@@ -25,7 +26,8 @@ class storesController extends Controller
         }
     }
 
-    function store(Request $request) {
+    function store(Request $request)
+    {
         $stores = new store();
 
         $stores->id_pondok = $request->id_pondok;
@@ -40,7 +42,5 @@ class storesController extends Controller
             'status' => true,
             'message' => 'data berhasil ditambah',
         ], 200);
-
     }
-    
 }

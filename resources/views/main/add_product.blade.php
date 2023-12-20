@@ -1,5 +1,6 @@
 <h3 class="page-title"><br>Add Product</h3>
-<h4 class="page-title">API Add ini digunakan untuk menambah list produck kedalam database. Endpoint <code>https://api.burga.web.id/api/product/store</code>. Method yang digunakan adalah <code>POST</code></h4>
+<h4 class="page-title">API Add ini digunakan untuk menambah list produck kedalam database. Endpoint
+    <code>https://api.burga.web.id/api/product/store</code>. Method yang digunakan adalah <code>POST</code></h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -66,7 +67,8 @@
                             <td><code>string</code></td>
                             <td><code>Body</code></td>
                             <td><code>Required</code></td>
-                            <td>hanya akan mendapatkan path, dan untuk mengakses gambar pada link berikut <code>https://api.burga.web.id/storage/PATH DARI DATABASE</code></td>
+                            <td>hanya akan mendapatkan path, dan untuk mengakses gambar pada link berikut
+                                <code>https://api.burga.web.id/storage/PATH DARI DATABASE</code></td>
                         </tr>
                     </tbody>
                 </table>
@@ -81,7 +83,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "Product created successfully"
 }</pre>

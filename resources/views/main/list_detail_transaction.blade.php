@@ -1,5 +1,8 @@
 <h3 class="page-title"><br>List Detail Transaction</h3>
-<h4 class="page-title">API List Detail Transaction adalah sebuah api yang digunakan untuk menampilkan semua list-list detail dari setiap transaksi yang dilakukan. Endpoint <code>https://api.burga.web.id/api/detail-transaction/list</code>. Method yang digunakan adalah <code>GET</code></h4>
+<h4 class="page-title">API List Detail Transaction adalah sebuah api yang digunakan untuk menampilkan semua list-list
+    detail dari setiap transaksi yang dilakukan. Endpoint
+    <code>https://api.burga.web.id/api/detail-transaction/list</code>. Method yang digunakan adalah <code>GET</code>
+</h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -39,7 +42,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "massage": "Transaksi ditemukan",
     "list_detail_transaction": [

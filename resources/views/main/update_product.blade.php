@@ -1,5 +1,8 @@
 <h3 class="page-title"><br>Update Product</h3>
-<h4 class="page-title">API update product yang sudah ada didatabse, dan update. dan untuk update bisa optional, bisa edit semua, atau bisa salah satu saja seperti stok atau price saja. Pada update ini menggunakan parameter <code>id</code>. Endpoint <code>https://api.burga.web.id/api/product/update/{id}</code>. Method yang digunakan adalah <code>POST</code></h4>
+<h4 class="page-title">API update product yang sudah ada didatabse, dan update. dan untuk update bisa optional, bisa edit
+    semua, atau bisa salah satu saja seperti stok atau price saja. Pada update ini menggunakan parameter
+    <code>id</code>. Endpoint <code>https://api.burga.web.id/api/product/update/{id}</code>. Method yang digunakan
+    adalah <code>POST</code></h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -59,7 +62,8 @@
                             <td><code>string</code></td>
                             <td><code>Body</code></td>
                             <td><code>Optional</code></td>
-                            <td>hanya akan mendapatkan path, dan untuk mengakses/melihat gambar pada link berikut <code>https://api.burga.web.id/storage/PATH DARI DATABASE</code></td>
+                            <td>hanya akan mendapatkan path, dan untuk mengakses/melihat gambar pada link berikut
+                                <code>https://api.burga.web.id/storage/PATH DARI DATABASE</code></td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,7 +78,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "Product updated successfully",
     "data_product": {

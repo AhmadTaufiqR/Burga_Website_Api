@@ -1,5 +1,7 @@
 <h3 class="page-title"><br>Delete Product</h3>
-<h4 class="page-title">API delete ini digunakan untuk menghapus product dalam database, dan menggunakan parameter <code>id</code>. Endpoint <code>https://api.burga.web.id/api/product/destroy/{id}</code>. Method yang digunakan adalah <code>DELETE</code></h4>
+<h4 class="page-title">API delete ini digunakan untuk menghapus product dalam database, dan menggunakan parameter
+    <code>id</code>. Endpoint <code>https://api.burga.web.id/api/product/destroy/{id}</code>. Method yang digunakan
+    adalah <code>DELETE</code></h4>
 <div class="row">
     <div class="col-md-7">
         <!-- TABLE HOVER -->
@@ -39,7 +41,7 @@
                 <h3 class="panel-title">Response</h3>
             </div>
             <div class="panel-body">
-<pre>{
+                <pre>{
     "status": true,
     "message": "Product deleted successfully"
 }</pre>

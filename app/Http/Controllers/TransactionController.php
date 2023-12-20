@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    function index() {
+    function index()
+    {
         $transactions = Transaction::with('kasir', 'user', 'detail')->get();
 
         return response()->json([
@@ -25,7 +26,7 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        if(!$request->date||!$request->quantity||!$request->total|| !$request->id_user || !$request->id_kasir ||!$request->id_store ||!$request->id_transaction){
+        if (!$request->date || !$request->quantity || !$request->total || !$request->id_user || !$request->id_kasir || !$request->id_store || !$request->id_transaction) {
             return response()->json([
                 'status' => false,
                 'massage' => 'Silahkan periksa kembali'
@@ -34,13 +35,13 @@ class TransactionController extends Controller
 
         $transacation = new Transaction();
         $id_user = User::where('id', '=', $request->id_user)
-        ->where('level', '=', 'user')
-        ->pluck('id')->first();
+            ->where('level', '=', 'user')
+            ->pluck('id')->first();
         $id_kasir = User::where('id', '=', $request->id_kasir)
-        ->where('level', '=', 'kasir')
-        ->pluck('id')->first();
+            ->where('level', '=', 'kasir')
+            ->pluck('id')->first();
         $id_store = store::where('id', '=', $request->id_store)
-        ->pluck('id')->first();
+            ->pluck('id')->first();
 
         $transacation->id_user = $id_user;
         $transacation->id_kasir = $id_kasir;
@@ -50,23 +51,20 @@ class TransactionController extends Controller
         $transacation->quantity = $request->input('quantity');
         $transacation->total = $request->input('total');
         $transacation->save();
-        
+
         return response()->json([
             'status' => true,
             'massage' => 'berhasil melakukan transaksi',
         ], 200);
-        
     }
 
-    function show($id) {
+    function show($id)
+    {
         $transactions = Transaction::with('kasir', 'user', 'detail')->whereId($id)->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',
             'data_transaction' => TransactionResource::collection($transactions)
         ]);
-        
-
     }
-
 }

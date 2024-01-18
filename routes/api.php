@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DetailTransactionController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
@@ -70,6 +71,11 @@ Route::get('/storage-link', function () {
     $target_folder = base_path() . '/storage/app/public';
     $link_folder = $_SERVER['DOCUMENT_ROOT'] . "/storage";
     symlink($target_folder, $link_folder);
+});
+
+Route::prefix('update')->group(function () {
+    Route::post('check', [AuthController::class, 'CheckSantri']);
+    Route::post('santri/{id}', [AuthController::class, 'UpdateSantri']);
 });
 
 // Route::post('register-kasir', [AuthController::class, 'register']);

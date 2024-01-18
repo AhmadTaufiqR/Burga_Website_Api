@@ -110,4 +110,34 @@ class AuthController extends Controller
     {
         return view('api.api_view');
     }
+
+    function UpdateSantri(Request $request, $id) {
+        $santri = User::findOrFail($id);
+        $santri->username = $request->username;
+        $santri->uuid = $request->uuid;
+        $santri->pin = $request->pin;
+
+        $santri->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+        ],200)->header('Content-Type', 'application/json');
+    }
+
+    function CheckSantri(Request $request) {
+        $santri = User::where('name', '=', $request->name)
+        ->Where('level', '=', 'user')->first();
+        if ($santri) {
+            return response()->json([
+                'status' => true,
+                'message' => 'success',
+            ], 200)->header('Content-Type', 'application/json');
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'user not found'
+            ], 200);
+        }
+    }
 }

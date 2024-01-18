@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('username')->unique()->nullable(true);
             $table->string('uuid')->nullable(true);
             $table->integer('pin')->nullable(true);
+            $table->integer('balance')->nullable(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address')->nullable(true);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\userResource;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -111,7 +112,8 @@ class AuthController extends Controller
         return view('api.api_view');
     }
 
-    function UpdateSantri(Request $request, $id) {
+    function UpdateSantri(Request $request, $id)
+    {
         $santri = User::findOrFail($id);
         $santri->username = $request->username;
         $santri->uuid = $request->uuid;
@@ -122,17 +124,19 @@ class AuthController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'success',
-        ],200)->header('Content-Type', 'application/json');
+        ], 200)->header('Content-Type', 'application/json');
     }
 
-    function CheckSantri(Request $request) {
+    function CheckSantri(Request $request)
+    {
         $santri = User::where('name', '=', $request->name)
-        ->Where('level', '=', 'user')->first();
+            ->Where('level', '=', 'user')->first();
         if ($santri) {
             return response()->json([
                 'status' => true,
                 'message' => 'success',
-            ], 200)->header('Content-Type', 'application/json');
+                'data' => new userResource($santri),
+            ], 200);
         } else {
             return response()->json([
                 'status' => false,

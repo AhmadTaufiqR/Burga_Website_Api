@@ -129,7 +129,7 @@ class AuthController extends Controller
 
     function CheckSantri()
     {
-        $santri = User::Where('level', '=', 'user')->get();
+        $santri = User::Where('level', '=', 'santri')->get();
         if ($santri) {
             return response()->json([
                 'status' => true,

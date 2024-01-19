@@ -24,6 +24,7 @@ class userResource extends JsonResource
             'uuid' => $this->uuid,
             'pin' => $this->pin,
             'balance' => $this->balance,
+            'address' => $this->address,
             'level' => $this->level,
             'created_at' => $this->formatcreateatjam(),
             'update_at' => $this->formatupdateatjam(),

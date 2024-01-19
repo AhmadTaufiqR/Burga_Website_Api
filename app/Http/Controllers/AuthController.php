@@ -127,15 +127,14 @@ class AuthController extends Controller
         ], 200)->header('Content-Type', 'application/json');
     }
 
-    function CheckSantri(Request $request)
+    function CheckSantri()
     {
-        $santri = User::where('name', '=', $request->name)
-            ->Where('level', '=', 'user')->first();
+        $santri = User::Where('level', '=', 'user')->get();
         if ($santri) {
             return response()->json([
                 'status' => true,
                 'message' => 'success',
-                'data' => new userResource($santri),
+                'data' => userResource::collection($santri),
             ], 200);
         } else {
             return response()->json([

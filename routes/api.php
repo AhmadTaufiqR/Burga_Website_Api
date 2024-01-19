@@ -74,7 +74,7 @@ Route::get('/storage-link', function () {
 });
 
 Route::prefix('update')->group(function () {
-    Route::post('check', [AuthController::class, 'CheckSantri']);
+    Route::get('check', [AuthController::class, 'CheckSantri']);
     Route::post('santri/{id}', [AuthController::class, 'UpdateSantri']);
 });
 

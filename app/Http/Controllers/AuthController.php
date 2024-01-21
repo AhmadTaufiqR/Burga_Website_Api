@@ -114,8 +114,16 @@ class AuthController extends Controller
 
     function UpdateSantri(Request $request, $id)
     {
+        // $request->validate([
+        //     'uuid' => 'unique:users,uuid'
+        // ], [
+        //     'uuid.unique' => 'Kartu sudah terdaftar'
+        // ]);
+
         $santri = User::findOrFail($id);
-        $santri->username = $request->username;
+        if ($request->username != '') {
+            $santri->username = $request->username;
+        }
         $santri->uuid = $request->uuid;
         $santri->pin = $request->pin;
 

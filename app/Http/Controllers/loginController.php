@@ -12,21 +12,22 @@ class loginController extends Controller
 {
     function login_user(Request $request)
     {
-        $user = User::where('email', '=', $request->email)
-            ->orWhere('name', '=', $request->name)
-            ->where('level', '=', 'user')
+        $user = User::where('uuid', '=', $request->uuid)
+            ->where('pin', '=', $request->pin)
+            ->where('level', '=', 'santri')
             ->first();
-        if (!$user || !Hash::check($request->password, $user->password) || $user->level != 'user') {
+        if ($user) {
+            return response()->json([
+                'status' => true,
+                'message' => 'success',
+                'data_user' => new loginJsonResource($user),
+            ], 200)->header('Content-Type', 'application/json');
+        } else {
             return response()->json([
                 'status' => false,
-                "message" => 'Unauthorized'
-            ], 401);
+                'message' => 'User tidak dapat ditemukan',
+            ], 401)->header('Content-Type', 'application/json');
         }
-        return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data_user' => new loginJsonResource($user),
-        ], 200)->header('Content-Type', 'application/json');
     }
 
     function login_kasir(Request $request)

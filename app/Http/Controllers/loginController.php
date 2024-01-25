@@ -107,7 +107,7 @@ class loginController extends Controller
         $kasir->name = $request->name;
         $kasir->email = $request->email;
         $kasir->password = Hash::make($request->password);
-        $kasir->level = 'user';
+        $kasir->level = 'santri';
 
         $kasir->save();
         return response()->json([

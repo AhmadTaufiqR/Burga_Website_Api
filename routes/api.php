@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::prefix('store')->group(function () {
         Route::get('list', [storesController::class, 'index']);
         Route::post('store', [storesController::class, 'store']);
+        Route::post('transaction', [storesController::class, 'addTransactionStore']);
     });
 
     Route::post('login-user', [loginController::class, 'login_user']);

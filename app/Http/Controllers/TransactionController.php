@@ -35,7 +35,7 @@ class TransactionController extends Controller
 
         $transacation = new Transaction();
         $id_user = User::where('id', '=', $request->id_user)
-            ->where('level', '=', 'user')
+            ->where('level', '=', 'santri')
             ->pluck('id')->first();
         $id_kasir = User::where('id', '=', $request->id_kasir)
             ->where('level', '=', 'kasir')

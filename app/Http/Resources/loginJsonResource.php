@@ -21,6 +21,8 @@ class loginJsonResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'level' => $this->level,
+            'balance' => $this->balance,
+            'address' => $this->address,
             'created_at' => $this->formatcreateatjam(),
             'update_at' => $this->formatupdateatjam(),
         ];

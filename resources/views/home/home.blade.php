@@ -31,7 +31,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item disable" href="#profile">Profile</a></li>
                             <li><a class="dropdown-item" href="logout">Logout</a></li>
-                            <li><a class="dropdown-item" href="api-direct">API Documentation</a></li>
+                            <li><a class="dropdown-item">API Documentation</a></li>
                         </ul>
                     </li>
                 </ul>

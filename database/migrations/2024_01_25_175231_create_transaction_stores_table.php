@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('stores_id')->constrained()->nullable(true);
             $table->integer('withdraw');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

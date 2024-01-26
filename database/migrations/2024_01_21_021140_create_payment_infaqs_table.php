@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('eat_amount');
             $table->integer('amount');
             $table->string('category');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

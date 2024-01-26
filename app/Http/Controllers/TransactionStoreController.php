@@ -48,9 +48,6 @@ class TransactionStoreController extends Controller
     public function show($id)
     {
         $transaction = transaction_store::where('stores_id', '=', $id)->orderBy('id', 'desc')->get();
-        return response()->json([
-            'siapp' => $transaction
-        ]);
         if ($transaction) {
             return response()->json([
                 'status' => true,

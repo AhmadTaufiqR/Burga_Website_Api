@@ -52,7 +52,7 @@ class TransactionStoreController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Data ditemukan',
-                'data_transaction' => TransactionStoreResource::collection($transaction)
+                'data_withdraw' => TransactionStoreResource::collection($transaction)
             ],200);
         } else {
             return response()->json([

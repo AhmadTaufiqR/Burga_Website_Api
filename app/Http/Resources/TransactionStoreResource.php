@@ -18,7 +18,7 @@ class TransactionStoreResource extends JsonResource
         // return parent::toArray($request);
         return [
             'Tanggal' => $this->formatcreateatjam(),
-            'withdraw' => $this->withdraw,
+            'saldo_withdraw' => $this->withdraw,
         ];
     }
     public function formatcreateatjam()

@@ -60,7 +60,7 @@ class TransactionController extends Controller
 
     function show($id)
     {
-        $transactions = Transaction::with('kasir', 'user', 'detail')->whereId($id)->get();
+        $transactions = Transaction::with('kasir', 'user', 'detail')->whereId($id)->orderBy('created_at', 'desc')->get();
         return response()->json([
             'status' => true,
             'massage' => 'Transaksi ditemukan',

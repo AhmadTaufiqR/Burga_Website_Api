@@ -33,7 +33,7 @@ class loginController extends Controller
     function login_kasir(Request $request)
     {
         $user = User::where('email', '=', $request->email)
-            ->orWhere('name', '=', $request->name)
+            ->orWhere('username', '=', $request->email)
             ->where('level', '=', 'kasir')
             ->first();
 

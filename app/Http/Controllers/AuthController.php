@@ -129,10 +129,16 @@ class AuthController extends Controller
 
         $santri->save();
 
-        return response()->json([
+        if($santri) {
+return response()->json([
             'status' => true,
             'message' => 'success',
         ], 200)->header('Content-Type', 'application/json');
+} else {
+return response()->json([
+            'status' => false,
+            'message' => 'Tidak bisa melakukan daftar',
+        ], 401)->header('Content-Type', 'application/json');}
     }
 
     function CheckSantri()

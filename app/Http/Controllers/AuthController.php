@@ -114,11 +114,14 @@ class AuthController extends Controller
 
     function UpdateSantri(Request $request, $id)
     {
-        // $request->validate([
-        //     'uuid' => 'unique:users,uuid'
-        // ], [
-        //     'uuid.unique' => 'Kartu sudah terdaftar'
-        // ]);
+
+        $cek_user = User::where('uuid', $request->uuid)->first();
+        if ($cek_user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'uuid sudah terdaftar'
+            ], 401)->header('Content-Type', 'application/json');
+        }
 
         $santri = User::findOrFail($id);
         if ($request->username != '') {
@@ -129,16 +132,10 @@ class AuthController extends Controller
 
         $santri->save();
 
-        if($santri) {
-return response()->json([
+        return response()->json([
             'status' => true,
             'message' => 'success',
         ], 200)->header('Content-Type', 'application/json');
-} else {
-return response()->json([
-            'status' => false,
-            'message' => 'Tidak bisa melakukan daftar',
-        ], 401)->header('Content-Type', 'application/json');}
     }
 
     function CheckSantri()

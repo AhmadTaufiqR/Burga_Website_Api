@@ -34,7 +34,7 @@ class ParentController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'User tidak dapat ditemukan',
-            ]);
+            ], 401);
         }
     }
 }

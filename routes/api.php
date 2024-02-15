@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DetailTransactionController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ParentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\storesController;
 use App\Http\Controllers\TransactionController;
@@ -62,6 +63,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('login-user', [loginController::class, 'login_user']);
     Route::post('login-kasir', [loginController::class, 'login_kasir']);
+});
+
+Route::prefix('user')->group(function () {
+    Route::post('login', [ParentController::class, 'login']);
 });
 
 Route::post('login-admin', [loginController::class, 'login_admin']);
